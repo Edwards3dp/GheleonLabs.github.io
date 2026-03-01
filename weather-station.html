@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desktop Weather Station - Custom PCB design with ATmega328PB and SHT31 sensor">
+    <title>Desktop Weather Station | Gheleon Labs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .project-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .video-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .spec-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .spec-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .spec-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .features-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .features-list li {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .features-list li strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gallery-item-caption {
+            padding: 1rem;
+            background: white;
+            text-align: center;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .tech-details {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        
+        .tech-details h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .component-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .component-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 2rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .specs-grid,
+            .gallery,
+            .component-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>⚡ Gheleon Labs</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <h2>🌡️ Desktop Weather Station</h2>
+            <p>A compact, offline weather monitoring device with custom PCB design, featuring real-time temperature and humidity display on a 0.96" OLED screen.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2 class="section-title">Project Demo</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/OrZo4PBSMo8" 
+                    title="Desktop Weather Station Demo" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        
+        <!-- Overview Section -->
+        <section>
+            <h2 class="section-title">Project Overview</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                This desktop weather station is a fully custom design from the ground up. Built around an ATmega328PB microcontroller on a custom PCB, it continuously monitors temperature and humidity using a high-precision SHT31 sensor. The data is displayed in real-time on a compact 0.96-inch OLED screen, providing at-a-glance environmental monitoring for your workspace.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Designed with simplicity in mind, this weather station requires no network configuration or WiFi setup - it's completely offline and ready to use straight out of the box. Just plug in a USB-C cable for power, and you're done. The adjustable 3D-printed stand with rubber feet ensures stable placement on any desk surface.
+            </p>
+        </section>
+        
+        <!-- Technical Specifications -->
+        <section class="features-section">
+            <h2 class="section-title">Key Features</h2>
+            <ul class="features-list">
+                <li>
+                    <strong>🔌 Plug & Play</strong>
+                    No WiFi setup or configuration required - completely offline operation
+                </li>
+                <li>
+                    <strong>📊 Real-Time Monitoring</strong>
+                    Continuous temperature and humidity readings displayed on 0.96" OLED
+                </li>
+                <li>
+                    <strong>⚙️ Custom PCB Design</strong>
+                    Purpose-built circuit board with ATmega328PB microcontroller
+                </li>
+                <li>
+                    <strong>🔗 I2C Communication</strong>
+                    Efficient sensor communication protocol for reliable data
+                </li>
+                <li>
+                    <strong>💻 Arduino Compatible</strong>
+                    CH340C USB-to-serial chip for easy programming via Arduino IDE
+                </li>
+                <li>
+                    <strong>📐 3D Printed Stand</strong>
+                    Angle-adjustable mount with rubber feet for stability
+                </li>
+                <li>
+                    <strong>🔋 USB-C Power</strong>
+                    Modern power connection - works with any USB-C cable
+                </li>
+                <li>
+                    <strong>🎯 High Precision</strong>
+                    SHT31 sensor provides accurate environmental measurements
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Technical Details -->
+        <section class="tech-details">
+            <h2 class="section-title" style="color: white;">Technical Specifications</h2>
+            
+            <div class="component-list">
+                <div class="component-item">
+                    <h4>Microcontroller</h4>
+                    <p>ATmega328PB</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">8-bit AVR microcontroller with enhanced features over the standard 328P</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Sensor</h4>
+                    <p>Sensirion SHT31</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">High-accuracy temperature & humidity sensor with I2C interface</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Display</h4>
+                    <p>0.96" OLED Screen</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Compact display with crisp text and graphics via I2C</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>USB Interface</h4>
+                    <p>CH340C</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">USB-to-serial converter for programming and debugging</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Communication</h4>
+                    <p>I2C Protocol</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Two-wire serial protocol for sensor and display communication</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Power</h4>
+                    <p>USB-C (5V)</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Standard USB-C power delivery</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Enclosure</h4>
+                    <p>3D Printed Stand</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Custom designed adjustable mount with rubber feet</p>
+                </div>
+                
+                <div class="component-item">
+                    <h4>Programming</h4>
+                    <p>Arduino IDE Compatible</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Easy firmware updates and customization</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Photo Gallery -->
+        <section>
+            <h2 class="section-title">Photo Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="20260301_123321.jpg" alt="Desktop Weather Station Front View">
+                    <div class="gallery-item-caption">Front View - OLED Display Active</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="20260301_123325.jpg" alt="Desktop Weather Station Angle View">
+                    <div class="gallery-item-caption">Side Angle - 3D Printed Stand</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="render.png" alt="CAD Render of Weather Station">
+                    <div class="gallery-item-caption">CAD Render - Design Model</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="0.96-OLED-Display-223617143.jpg" alt="0.96 inch OLED Display">
+                    <div class="gallery-item-caption">0.96" OLED Display Component</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="sensirion_sht31-d_isolated-470117361.png" alt="SHT31 Temperature and Humidity Sensor">
+                    <div class="gallery-item-caption">Sensirion SHT31 Sensor</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Design Files -->
+        <section class="features-section">
+            <h2 class="section-title">Design Files & Documentation</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                Complete project documentation including PCB schematics, CAD drawings, and 3D printable files.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="drawing.pdf" target="_blank" style="background: #667eea; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">
+                    📄 View CAD Drawing (PDF)
+                </a>
+                <a href="Photos/" style="background: #764ba2; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">
+                    📁 Browse All Photos
+                </a>
+            </div>
+        </section>
+        
+        <!-- Project Details -->
+        <section>
+            <h2 class="section-title">Design Philosophy</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Simplicity First</h3>
+                    <p>No complicated setup or WiFi configuration. Just plug in and go - perfect for users who want environmental monitoring without the hassle of smart home integration.</p>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>Custom Hardware</h3>
+                    <p>Every aspect designed from scratch - from the PCB layout to the 3D-printed enclosure. This isn't a kit build; it's a fully custom engineered solution.</p>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>Offline Operation</h3>
+                    <p>Complete data privacy and reliability. No internet connection means no cloud dependencies, no data uploads, and no connectivity issues.</p>
+                </div>
+                
+                <div class="spec-card">
+                    <h3>Maker-Friendly</h3>
+                    <p>Arduino-compatible programming interface makes it easy to customize the display, add features, or integrate additional sensors for your specific needs.</p>
+                </div>
+            </div>
+        </section>
+        
+        <a href="projects.html" class="back-button">← Back to All Projects</a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Gheleon Labs LLC. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">
+            Custom prototyping and engineering in Colorado
+        </p>
+    </footer>
+</body>
+</html>
