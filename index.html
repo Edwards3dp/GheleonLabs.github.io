@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gheleon Labs - Expert 3D printing, 3D modeling, PCB design, and custom prototyping services in Colorado">
+    <title>Gheleon Labs | 3D Printing & Prototyping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .about {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>⚡ Gheleon Labs</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>From Concept to Prototype</h2>
+        <p>Expert 3D printing, modeling, PCB design, and custom prototyping services for hobbyists and startups in Colorado.</p>
+        <a href="#contact" class="cta-button">Start Your Project</a>
+    </section>
+    
+    <section id="services" class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>🖨️ 3D Printing</h3>
+                <p>High-quality 3D printing for prototypes, custom parts, and one-off designs. We work with a variety of materials and can handle complex geometries.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>📐 3D Modeling & CAD</h3>
+                <p>Professional 3D modeling and CAD design services. Turn your ideas into detailed models ready for manufacturing.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>⚡ PCB & Circuit Design</h3>
+                <p>Custom PCB design and circuit development. From schematics to production-ready boards with thorough documentation.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🔧 Custom 3D Printers</h3>
+                <p>Build and customize 3D printers tailored to your specific needs. Refurbishment services for existing machines.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>📋 Prototyping & Documentation</h3>
+                <p>Our specialty: detailed prototyping with comprehensive documentation. Perfect for iterative development and testing.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🔄 Refurbishment</h3>
+                <p>Breathe new life into old 3D printers. Upgrades, repairs, and maintenance to keep your equipment running smoothly.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">About Gheleon Labs</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                Based in Colorado, Gheleon Labs is your partner for turning ideas into reality. With a degree in Electronic Engineering Technologies and years of hands-on experience in 3D printing and electronics, we specialize in helping hobbyists and startups bring their projects to life.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                Whether you need a single prototype or comprehensive documentation for your next big idea, we combine technical expertise with a maker's passion. Currently working with the National Center for Atmospheric Research, we bring professional-grade skills to every project.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                <strong>Why Gheleon Labs?</strong> We're analysts and testers at heart—meticulous, detail-oriented, and dedicated to helping you refine your designs through careful prototyping and iteration.
+            </p>
+        </div>
+    </section>
+    
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="text-align: center; font-size: 1.1rem;">
+            <p style="margin-bottom: 1rem;">Ready to start your project? Let's talk about how we can help.</p>
+            <p><strong>Email:</strong> contact@gheleonlabs.com</p>
+            <p><strong>Location:</strong> Colorado</p>
+            <p style="margin-top: 2rem;">
+                <a href="https://github.com/Edwards3dp" style="color: #667eea; text-decoration: none;">
+                    GitHub: @Edwards3dp
+                </a>
+            </p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 Gheleon Labs LLC. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">
+            Serving hobbyists and startups across Colorado and beyond.
+        </p>
+    </footer>
+</body>
+</html>
