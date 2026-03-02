@@ -211,7 +211,7 @@
             margin-bottom: 0.5rem;
         }
         
-        .pdf-viewer {
+        .cad-section {
             background: white;
             padding: 3rem;
             border-radius: 15px;
@@ -219,19 +219,30 @@
             margin: 3rem 0;
         }
         
-        .pdf-wrapper {
-            position: relative;
+        .cad-image {
             width: 100%;
-            height: 800px;
+            max-width: 800px;
+            margin: 2rem auto;
+            display: block;
             border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid #e9ecef;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        .pdf-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .download-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
         }
         
         .back-button {
@@ -271,10 +282,6 @@
             
             .gallery {
                 grid-template-columns: 1fr;
-            }
-            
-            .pdf-wrapper {
-                height: 600px;
             }
         }
     </style>
@@ -331,46 +338,44 @@
             <h2 class="section-title">Photo Gallery</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="20260301_123321.jpg" alt="Desktop Weather Station Front View">
+                    <img src="Photos/20260301_123321.jpg" onerror="this.src='20260301_123321.jpg'" alt="Desktop Weather Station Front View">
                     <div class="gallery-item-caption">Front View - OLED Display Active</div>
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="20260301_123325.jpg" alt="Desktop Weather Station Angle View">
+                    <img src="Photos/20260301_123325.jpg" onerror="this.src='20260301_123325.jpg'" alt="Desktop Weather Station Angle View">
                     <div class="gallery-item-caption">Side Angle - 3D Printed Stand</div>
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="render.png" alt="CAD Render of Weather Station">
+                    <img src="Photos/render.png" onerror="this.src='render.png'" alt="CAD Render of Weather Station">
                     <div class="gallery-item-caption">CAD Render - Design Model</div>
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="0.96-OLED-Display-223617143.jpg" alt="0.96 inch OLED Display">
+                    <img src="Photos/0.96-OLED-Display-223617143.jpg" onerror="this.src='0.96-OLED-Display-223617143.jpg'" alt="0.96 inch OLED Display">
                     <div class="gallery-item-caption">0.96" OLED Display Component</div>
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="sensirion_sht31-d_isolated-470117361.png" alt="SHT31 Temperature and Humidity Sensor">
+                    <img src="Photos/sensirion_sht31-d_isolated-470117361.png" onerror="this.src='sensirion_sht31-d_isolated-470117361.png'" alt="SHT31 Temperature and Humidity Sensor">
                     <div class="gallery-item-caption">Sensirion SHT31 Sensor</div>
                 </div>
             </div>
         </section>
         
-        <!-- CAD Drawing -->
-        <div class="pdf-viewer">
+        <!-- CAD Drawing Section -->
+        <div class="cad-section">
             <h2 class="section-title">CAD Drawing & Technical Documentation</h2>
             <p style="margin-bottom: 2rem; font-size: 1.1rem;">
                 Complete mechanical drawing showing dimensions and assembly details for the 3D-printed stand and enclosure.
             </p>
-            <div class="pdf-wrapper">
-                <iframe src="drawing.pdf" type="application/pdf"></iframe>
-            </div>
-            <p style="margin-top: 1rem; text-align: center;">
-                <a href="drawing.pdf" download style="color: #667eea; font-weight: 600; text-decoration: none;">
-                    📥 Download PDF Drawing
+            <img src="Photos/render.png" onerror="this.src='render.png'" alt="CAD Render" class="cad-image">
+            <div style="text-align: center;">
+                <a href="drawing.pdf" class="download-button" target="_blank">
+                    📥 Download Full CAD Drawing (PDF)
                 </a>
-            </p>
+            </div>
         </div>
         
         <!-- Technical Specifications -->
