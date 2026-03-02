@@ -87,6 +87,9 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
         .project-card:hover {
@@ -128,6 +131,13 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
+        }
+        
+        .view-project-link {
+            margin-top: 1rem;
+            color: #667eea;
+            font-weight: 600;
+            display: inline-block;
         }
         
         .coming-soon {
@@ -185,93 +195,21 @@
     
     <div class="container">
         <div class="projects-grid">
-            <!-- Example Project 1 -->
-            <div class="project-card">
-                <div class="project-image">🖨️</div>
-                <div class="project-content">
-                    <h3>Custom 3D Printer Build</h3>
-                    <p>Designed and built a custom CoreXY 3D printer with upgraded linear rails, direct drive extruder, and automatic bed leveling.</p>
-                    <div class="project-tags">
-                        <span class="tag">3D Printing</span>
-                        <span class="tag">Hardware</span>
-                        <span class="tag">CAD</span>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Desktop Weather Station -->
-            <a href="weather-station.html" style="text-decoration: none; color: inherit;">
-                <div class="project-card">
-                    <div class="project-image">🌡️</div>
-                    <div class="project-content">
-                        <h3>Desktop Weather Station</h3>
-                        <p>Custom PCB design with ATmega328PB and SHT31 sensor displaying real-time temperature and humidity on a 0.96" OLED screen. Completely offline with USB-C power.</p>
-                        <div class="project-tags">
-                            <span class="tag">PCB Design</span>
-                            <span class="tag">ATmega328PB</span>
-                            <span class="tag">3D Printing</span>
-                            <span class="tag">I2C</span>
-                        </div>
-                        <p style="margin-top: 1rem; color: #667eea; font-weight: 600;">→ View Full Project</p>
-                    </div>
-                </div>
-            </a>
-            
-            <!-- Example Project 3 -->
-            <div class="project-card">
-                <div class="project-image">🔧</div>
+            <a href="weather-station.html" class="project-card">
+                <div class="project-image">🌡️</div>
                 <div class="project-content">
-                    <h3>Printer Refurbishment</h3>
-                    <p>Complete teardown and rebuild of an older 3D printer, including new electronics, upgraded hotend, and improved cable management.</p>
-                    <div class="project-tags">
-                        <span class="tag">Refurbishment</span>
-                        <span class="tag">Electronics</span>
-                        <span class="tag">3D Printing</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Example Project 4 -->
-            <div class="project-card">
-                <div class="project-image">📐</div>
-                <div class="project-content">
-                    <h3>Prototype Enclosure Design</h3>
-                    <p>Custom enclosure design for a startup's electronics project. Iterative prototyping with 3D printed test fits before final production.</p>
-                    <div class="project-tags">
-                        <span class="tag">3D Modeling</span>
-                        <span class="tag">Prototyping</span>
-                        <span class="tag">CAD</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Example Project 5 -->
-            <div class="project-card">
-                <div class="project-image">🎮</div>
-                <div class="project-content">
-                    <h3>Custom Controller PCB</h3>
-                    <p>Designed a custom game controller PCB with mechanical switches and RGB lighting. Complete circuit design and firmware documentation.</p>
+                    <h3>Desktop Weather Station</h3>
+                    <p>Custom PCB design with ATmega328PB and SHT31 sensor displaying real-time temperature and humidity on a 0.96" OLED screen. Completely offline with USB-C power.</p>
                     <div class="project-tags">
                         <span class="tag">PCB Design</span>
-                        <span class="tag">Circuit Design</span>
-                        <span class="tag">Gaming</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Example Project 6 -->
-            <div class="project-card">
-                <div class="project-image">🔬</div>
-                <div class="project-content">
-                    <h3>Research Equipment Mount</h3>
-                    <p>Specialized mounting hardware for atmospheric research equipment. Precision 3D printed parts designed to withstand outdoor conditions.</p>
-                    <div class="project-tags">
-                        <span class="tag">Research</span>
+                        <span class="tag">ATmega328PB</span>
                         <span class="tag">3D Printing</span>
-                        <span class="tag">Engineering</span>
+                        <span class="tag">I2C</span>
                     </div>
+                    <span class="view-project-link">→ View Full Project</span>
                 </div>
-            </div>
+            </a>
         </div>
         
         <div class="coming-soon">
